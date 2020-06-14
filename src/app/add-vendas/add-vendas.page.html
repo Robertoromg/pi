@@ -1,0 +1,71 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-button size="small" shape="round" color="medium" (click)="voltar()">
+          <ion-icon class="branco" name="arrow-back"></ion-icon>
+          </ion-button>
+      </ion-buttons>
+      <ion-title>
+          <ion-text color="light">
+            <ion-text color="light" class="fw400">Cadastro de Vendas</ion-text>
+          </ion-text>
+      </ion-title>
+      
+    </ion-toolbar>
+    
+  </ion-header>
+
+<ion-content class="form-registrar" padding>
+
+    <div class="list-form">
+        <ion-item no-padding class="animated fadeInUp">
+          <ion-label position="floating" class="branco">
+            <ion-icon name="chatboxes" item-start></ion-icon>
+            Produto
+          </ion-label>
+          <ion-input color="secondary" type="text" [(ngModel)]="produto"></ion-input>
+        </ion-item>
+        <p ion-text class="text08">
+          <ion-text color="warning">
+            Campo Requerido
+          </ion-text>
+        </p>
+  
+        <ion-item no-padding class="animated fadeInUp">
+            <ion-label position="floating" class="branco">
+              <ion-icon name="cash" item-start></ion-icon>
+              Valor
+            </ion-label>
+            <ion-input *ngIf="!id" color="secondary" type="text" [(ngModel)]="valor"></ion-input>
+            <ion-input *ngIf="id>=1" disabled color="secondary" type="text" [(ngModel)]="valor"></ion-input>
+          </ion-item>
+          <p ion-text class="text08">
+            <ion-text color="warning">
+                Campo Requerido
+            </ion-text>
+          </p>
+  
+       
+      </div>
+
+      <br><br>
+  
+      <div margin-top>
+        <ion-button *ngIf="!id" icon-left size="medium" expand="full" shape="round" color="dark" (click)="cadastrar()"
+          tappable>
+          <ion-icon name="save"></ion-icon>
+          Salvar
+        </ion-button>
+
+        <ion-button *ngIf="id>=1" icon-left size="medium" expand="full" shape="round" color="dark" (click)="editar()"
+        tappable>
+        <ion-icon name="save"></ion-icon>
+        Editar
+      </ion-button>
+  
+  
+      </div>
+  
+      
+
+</ion-content>

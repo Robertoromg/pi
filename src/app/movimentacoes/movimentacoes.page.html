@@ -1,0 +1,73 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button color="secondary"></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+          <ion-text color="light">
+            <ion-text color="light" class="fw400">Movimentações</ion-text>
+          </ion-text>
+      </ion-title>
+      
+    </ion-toolbar>
+    <ion-toolbar color="dark">
+      <!-- <ion-searchbar [(ngModel)]="searchKey" placeholder="Buscar"></ion-searchbar> -->
+     <ion-buttons>
+        <ion-input type="date" [(ngModel)]="dataBuscarInicial" ></ion-input>
+        <ion-input type="date" [(ngModel)]="dataBuscarFinal" ></ion-input>
+     </ion-buttons>
+     
+      
+
+      <ion-buttons slot="end">
+        <ion-button size="small" shape="round" color="medium" (click)="buscar(dataBuscarInicial, dataBuscarFinal)">
+          <ion-icon name="search"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <ion-content padding>
+
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          
+          refreshingSpinner="circles"
+          refreshingText="Carregando...">
+        </ion-refresher-content>
+      </ion-refresher>
+  
+
+<ion-list>
+    <!-- Sliding item with text options on both sides -->
+   
+    <ion-item-sliding *ngFor="let dado of lista">  
+      <ion-item  *ngIf="dado.tipo!='Entrada'">
+          <ion-label><h2 class="red"> {{dado.tipo}} </h2> <h2><small> <span class="red">R${{dado.valor}}</span> - {{dado.movimento}}  - {{dado.data2}}</small></h2></ion-label>
+        </ion-item>
+
+        <ion-item *ngIf="dado.tipo=='Entrada'">
+            <ion-label><h2 class="green"> {{dado.tipo}} </h2> <h2><small> <span class="green">R${{dado.valor}}</span> - {{dado.movimento}} - {{dado.data2}}</small></h2></ion-label>
+          </ion-item>
+
+          
+    </ion-item-sliding>
+       
+    
+  
+    
+  </ion-list>
+
+
+  <ion-infinite-scroll  (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Carregando mais dados">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  
+  
+
+</ion-content>
