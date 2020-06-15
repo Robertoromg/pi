@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { HTTP } from '@ionic-native/http/ngx';
+//import { HTTP } from '@ionic-native/http/ngx';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
@@ -19,10 +19,9 @@ export class PostProvider{
           };
        
             let url = this.server + api ;
-           return this.http.post(url, JSON.stringify(dados), httpOptions)
+        return this.http.post(url, JSON.stringify(dados), httpOptions)
             .map(res => res);
-       
-    
+
   }
 
 }

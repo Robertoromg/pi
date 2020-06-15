@@ -28,7 +28,6 @@ import { HttpClientModule } from '@angular/common/http';
     SplashScreen,
     PostProvider,
     NativeStorage,
-    
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
