@@ -62,7 +62,7 @@ export class GastosPage implements OnInit {
   }
 
 
-//barra de rolagem
+//BARRA DE ROLAGEM
 loadData(event) {
   
     this.start += this.limit;

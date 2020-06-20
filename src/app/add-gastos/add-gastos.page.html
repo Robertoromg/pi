@@ -21,7 +21,7 @@
         <ion-item no-padding class="animated fadeInUp">
           <ion-label position="floating" class="branco">
             <ion-icon name="chatboxes" item-start></ion-icon>
-            Motivo
+            Tipo da despesa
           </ion-label>
           <ion-input color="secondary" type="text" [(ngModel)]="motivo"></ion-input>
         </ion-item>
@@ -34,7 +34,7 @@
         <ion-item no-padding class="animated fadeInUp">
             <ion-label position="floating" class="branco">
               <ion-icon name="cash" item-start></ion-icon>
-              Valor
+              Valor da despesa
             </ion-label>
             <ion-input *ngIf="!id" color="secondary" type="text" [(ngModel)]="valor"></ion-input>
             <ion-input *ngIf="id>=1" disabled color="secondary" type="text" [(ngModel)]="valor"></ion-input>
@@ -54,7 +54,7 @@
         <ion-button *ngIf="!id" icon-left size="medium" expand="full" shape="round" color="dark" (click)="cadastrar()"
           tappable>
           <ion-icon name="save"></ion-icon>
-          Salvar
+          Lançar
         </ion-button>
 
         <ion-button *ngIf="id>=1" icon-left size="medium" expand="full" shape="round" color="dark" (click)="editar()"
