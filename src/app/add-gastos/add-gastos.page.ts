@@ -11,13 +11,13 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 })
 export class AddGastosPage implements OnInit {
 
-  motivo: string = "";
+  historico: string = "";
   valor: string = "";
  
-  id: number;
+  id_despesa: number;
 
   dadosLogin: any;
-  usuario : string = "Hugo Vasconcelos"; 
+  usuario_logado : string = "TESTE"; 
 
   constructor(
     private router: Router,  
@@ -37,7 +37,7 @@ export class AddGastosPage implements OnInit {
   ionViewWillEnter(){
     this.storage.getItem('session_storage').then((res)=>{
       this.dadosLogin = res;
-      this.usuario = this.dadosLogin.nome;
+      this.usuario_logado = this.dadosLogin.nome;
       console.log(res);
     });
   }
@@ -45,7 +45,7 @@ export class AddGastosPage implements OnInit {
 
   async presentToast() {
     const toast = await this.toastController.create({
-      message: 'Dados Salvo',
+      message: 'Despesa lançada',
       duration: 2000,
       color: "success"
     });
@@ -56,10 +56,10 @@ export class AddGastosPage implements OnInit {
   
   ngOnInit() {
     this.actRoute.params.subscribe((data: any)=>{
-      this.id = data.id;
-      this.motivo = data.motivo;
+      this.id_despesa = data.id_despesa;
+      this.historico = data.historico;
       this.valor = data.valor;
-      this.usuario = data.funcionario;
+      this.usuario_logado = data.usuario_logado;
       console.log(data);
     });
   }
@@ -70,9 +70,9 @@ export class AddGastosPage implements OnInit {
     return new Promise(resolve => {
       let dados = {
         requisicao : 'add',
-        motivo: this.motivo,
+        historico: this.historico,
         valor: this.valor,
-        usuario: this.usuario
+        usuario_logado: this.usuario_logado
       };
       this.provider.Api(dados, 'apiGastos.php')
       .subscribe(data => {
@@ -92,9 +92,9 @@ export class AddGastosPage implements OnInit {
     return new Promise(resolve => {
       let dados = {
         requisicao : 'editar',
-        motivo: this.motivo,
+        historico: this.historico,
                
-        id: this.id
+        id_despesa: this.id_despesa
       };
       this.provider.Api(dados, 'apiGastos.php')
       .subscribe(data => {

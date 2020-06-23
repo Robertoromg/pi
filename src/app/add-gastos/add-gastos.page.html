@@ -23,7 +23,7 @@
             <ion-icon name="chatboxes" item-start></ion-icon>
             Tipo da despesa
           </ion-label>
-          <ion-input color="secondary" type="text" [(ngModel)]="motivo"></ion-input>
+          <ion-input color="secondary" type="text" [(ngModel)]="historico"></ion-input>
         </ion-item>
         <p ion-text class="text08">
           <ion-text color="warning">
@@ -36,8 +36,8 @@
               <ion-icon name="cash" item-start></ion-icon>
               Valor da despesa
             </ion-label>
-            <ion-input *ngIf="!id" color="secondary" type="text" [(ngModel)]="valor"></ion-input>
-            <ion-input *ngIf="id>=1" disabled color="secondary" type="text" [(ngModel)]="valor"></ion-input>
+            <ion-input *ngIf="!id_despesa" color="secondary" type="text" [(ngModel)]="valor"></ion-input>
+            <ion-input *ngIf="id_despesa>=1" disabled color="secondary" type="text" [(ngModel)]="valor"></ion-input>
           </ion-item>
           <p ion-text class="text08">
             <ion-text color="warning">
@@ -51,13 +51,13 @@
       <br><br>
   
       <div margin-top>
-        <ion-button *ngIf="!id" icon-left size="medium" expand="full" shape="round" color="dark" (click)="cadastrar()"
+        <ion-button *ngIf="!id_despesa" icon-left size="medium" expand="full" shape="round" color="dark" (click)="cadastrar()"
           tappable>
           <ion-icon name="save"></ion-icon>
           Lançar
         </ion-button>
 
-        <ion-button *ngIf="id>=1" icon-left size="medium" expand="full" shape="round" color="dark" (click)="editar()"
+        <ion-button *ngIf="id_despesa>=1" icon-left size="medium" expand="full" shape="round" color="dark" (click)="editar()"
         tappable>
         <ion-icon name="save"></ion-icon>
         Editar

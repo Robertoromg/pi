@@ -16,7 +16,7 @@ export class GastosPage implements OnInit {
  limit : number = 10;
  start : number = 0;
  valor: string = "";
- motivo: string = "";
+ historico: string = "";
  data: string = "";
   dataBuscar: Date;
 
@@ -36,7 +36,7 @@ export class GastosPage implements OnInit {
 
   async MensagemErro() {
     const toast = await this.toastController.create({
-      message: 'Registro não encontrado!',
+      message: 'Data sem lançamento!',
       duration: 2000,
       color: 'danger'
     });
@@ -137,15 +137,15 @@ add(){
 }
 
 
-editar(id, motivo, valor){
-  this.router.navigate(['/add-gastos/' + id + '/' + motivo + '/' + valor]);
+editar(id_despesa, historico, valor){
+  this.router.navigate(['/add-gastos/' + id_despesa + '/' + historico + '/' + valor]);
 }
 
 
-excluir(id){
+excluir(id_despesa){
   let dados = {
     requisicao : 'excluir',
-    id : id  
+    id_despesa : id_despesa
   }  
    
     this.provider.Api(dados, 'apiGastos.php').subscribe(data => {

@@ -29,7 +29,7 @@ usuario : string;
   ionViewWillEnter(){
     this.storage.getItem('session_storage').then((res)=>{
       this.dadosLogin = res;
-      this.usuario = this.dadosLogin.nome;
+      this.usuario = this.dadosLogin.NOME;
       console.log(res);
 
     
